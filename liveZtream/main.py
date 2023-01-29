@@ -1,5 +1,5 @@
 import cv2
-import time
+import os
 
 cap = cv2.VideoCapture(0)
 
@@ -19,11 +19,11 @@ out = cv2.VideoWriter('output.mp4', cv2.VideoWriter_fourcc(
 mytime = int(input('Enter time in second : '))
 
 
-for x in range(mytime, 0, -1):
-    # second = x % 60
-    # minute = int(x/60) % 60
-    # hour = int(x/3600)
-    # print(f'{hour:02} : {minute:02} : {second:02} ')
+for x in range(mytime*12, 0, -1):
+    second = (x//12) % 60
+    minute = int((x//12)/60) % 60
+    hour = int((x//12)/3600)
+    print(f'{hour:02} : {minute:02} : {second:02} ')
 
     ret, frame = cap.read()
 
@@ -32,15 +32,16 @@ for x in range(mytime, 0, -1):
         out.write(frame)
         # cv2.imshow('Capture', frame)
 
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+        
     else:
         break
 
-    # time.sleep(1)
+    os.system('cls') 
 
 
 
 
 cap.release()
 cv2.destroyAllWindows()
+
+print('Programe terminated ...')
