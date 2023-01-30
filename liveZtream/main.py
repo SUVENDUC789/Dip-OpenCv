@@ -32,13 +32,10 @@ for x in range(mytime*12, 0, -1):
         out.write(frame)
         # cv2.imshow('Capture', frame)
 
-        
     else:
         break
 
-    os.system('cls') 
-
-
+    os.system('cls')
 
 
 cap.release()
